@@ -1,0 +1,25 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+			<%= form_tag movies_path, method: :get do %>
+			  <%= text_field_tag :query,
+			    params[:query],
+			    class: "form-control",
+			    placeholder: "Find a movie"
+			  %>
+			  <%= submit_tag "Search", class: "btn btn-primary mt-2 mb-4" %>
+			<% end %>
+
+      <div id="movies">
+      	<% if @results.empty? %>
+      		<p>no results found</p>
+      	<% end %>
+
+        <% @results.each do |result| %>
+          <h4><%= result.title %></h4>
+          <p><%= result.syllabus %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
